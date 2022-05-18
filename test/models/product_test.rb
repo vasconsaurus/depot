@@ -31,7 +31,7 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   def new_product(image_url)
-    Product.new(title: "Book",
+    Product.new(title: "book title",
                 description: "zzz",
                 price: 1,
                 image_url: image_url)
@@ -62,5 +62,25 @@ class ProductTest < ActiveSupport::TestCase
     assert product.invalid?
     # assert_equal ["has already been taken"], product.errors[:title]
     assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
+  end
+
+  def new_product2(book_title)
+    Product.new(title: book_title,
+                description: "zzz",
+                price: 1,
+                image_url: "fred.gif")
+  end
+
+  test "product title is not valid under 4 characters" do
+    ok = ['The Best Book Ever', 'A not so great Book']
+    bad = ['Bad', 'Fu']
+
+    ok.each do |book_title|
+      assert new_product2(book_title).valid?
+    end
+
+    bad.each do |book_title|
+      assert new_product2(book_title).invalid?
+    end
   end
 end
