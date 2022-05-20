@@ -33,11 +33,18 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should show product" do
     get product_url(@product)
     assert_response :success
+    assert_select 'strong', 'Title:'
+    assert_select 'strong', 'Description:'
+    assert_select 'strong', 'Image url:'
+    assert_select 'strong', 'Price:'
   end
 
   test "should get edit" do
     get edit_product_url(@product)
     assert_response :success
+    assert_select 'input', 5
+    assert_select '.actions', 1
+    assert_select '.field', 4
   end
 
   test "should update product" do
