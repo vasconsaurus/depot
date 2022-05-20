@@ -14,7 +14,6 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'a', 'Edit'
     assert_select 'a', 'Destroy'
     assert_select '.list_image', 3
-    assert_select 'tr', 4
   end
 
   test "should get new" do
