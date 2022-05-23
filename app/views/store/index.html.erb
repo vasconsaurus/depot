@@ -3,6 +3,9 @@
 <% end %>
 
 <h1>Your Pragamatic Catalog</h1>
+<% if  @count >= 5 %>
+  <p>count: <%= pluralize(@count, "visit") %></p>
+<% end %>
 
 <ul class="catalog">
   <% cache @products do %>
