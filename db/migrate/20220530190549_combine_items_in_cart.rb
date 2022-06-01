@@ -19,7 +19,7 @@ class CombineItemsInCart < ActiveRecord::Migration[6.0]
         end
       end
     end
-
+,
     def down
       # split items with quantity > 1 multiple items
       LineItem.where("quantity>1").each do |line_item|
