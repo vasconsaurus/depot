@@ -23,9 +23,12 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to cart_url(Cart.last)
   end
 
+  # rethink this one, in this case it doesnt show cart because session isnt passed
   test "should show cart" do
     get cart_url(@cart)
-    assert_response :success
+
+    assert_redirected_to store_index_url
+    # assert_response :success
   end
 
   test "should get edit" do
@@ -34,7 +37,7 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update cart" do
-    patch cart_url(@cart), params: { cart: {  } }
+    patch cart_url(@cart)
     assert_redirected_to cart_url(@cart)
   end
 
