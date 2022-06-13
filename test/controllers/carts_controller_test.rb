@@ -27,8 +27,7 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
   test "should show cart" do
     get cart_url(@cart)
 
-    assert_redirected_to store_index_url
-    # assert_response :success
+    assert_response :found
   end
 
   test "should get edit" do
