@@ -1,2 +1,5 @@
-cart = document.querySelector('#cart')
+cart = document.querySelector("#cart")
 cart.innerHTML = "<%= j render(@cart) %>" <%# j: escape_javascript  %>
+
+notice = document.querySelector("#notice")
+if (notice) notice.style.display = "none"
