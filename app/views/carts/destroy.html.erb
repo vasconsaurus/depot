@@ -1,4 +1,3 @@
 cart = document.querySelector("#cart")
 
-<%# if (price.innerText == "$0.00") cart.style.display = "none" %>
 <% if @cart.destroyed? %> cart.style.display = "none" <% end %>
