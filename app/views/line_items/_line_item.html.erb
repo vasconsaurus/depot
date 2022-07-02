@@ -5,6 +5,10 @@
 <% end %>
   <td class="quantity"><%= line_item.quantity %></td>
   <td><%= line_item.product.title %></td>
+  <%= form_for (line_item), method: :put do |f| %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <td class="button-add"> <%= button_to '+', name: "update", value: "increment", remote: true %> </td>
+  <% end %>
   <td class="price"><%= number_to_currency(line_item.total_price) %></td>
   <td class="button"> <%= button_to 'X', line_item, method: :delete, data: { confirm: 'Are you sure?'} %> </td>
 </tr>
