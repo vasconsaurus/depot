@@ -65,14 +65,13 @@ class LineItemsController < ApplicationController
   end
 
   def decrement_line_item
-    if @line_item.quantity > 1
-      @line_item.quantity -= 1
-      if @line_item.save
-        respond_to do |format|
-          format.html { redirect_to cart_url(@cart), notice: 'Line item was successfully decreased.' }
-          format.js { @current_item = @line_item }
-          format.json { head :ok }
-        end
+    @line_item.decrement_quantity
+
+    if @line_item.save
+      respond_to do |format|
+        format.html { redirect_to store_index_url, notice: 'Line item was successfully decreased.' }
+        format.js { @current_item = @line_item }
+        format.json { head :ok }
       end
     else
       LineItem.destroy(@line_item)
