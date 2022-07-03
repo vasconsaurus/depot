@@ -1,8 +1,8 @@
 class LineItemsController < ApplicationController
   include CurrentCart
   include IncrementCounter
-  before_action :set_cart, only: %i[ create ]
-  before_action :set_line_item, only: %i[ show edit update destroy ]
+  before_action :set_cart, only: %i[ create decrement_line_item ]
+  before_action :set_line_item, only: %i[ show edit update destroy decrement_line_item ]
 
   # GET /line_items or /line_items.json
   def index
@@ -61,6 +61,21 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to store_index_url, notice: "Line item was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def decrement_line_item
+    if @line_item.quantity > 1
+      @line_item.quantity -= 1
+      if @line_item.save
+        respond_to do |format|
+          format.html { redirect_to cart_url(@cart), notice: 'Line item was successfully decreased.' }
+          format.js { @current_item = @line_item }
+          format.json { head :ok }
+        end
+      end
+    else
+      LineItem.destroy(@line_item)
     end
   end
 
