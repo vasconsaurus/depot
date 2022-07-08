@@ -42,6 +42,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }
         format.json { render :show, status: :ok, location: @product }
 
+        @product_new_price = @product.price
         @count = session[:counter]
         @products = Product.all.order(:title)
         ActionCable.server.broadcast 'products', html: render_to_string('store/index', layout: false)
