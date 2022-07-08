@@ -11,7 +11,7 @@
   <% cache @products do %>
     <% @products.each do |product| %>
       <% cache product do %>
-        <% if product.price == @product_new_price %>
+        <% if product.price == @product_new_price && product.id == @updated_product_id %>
         <li class='line-item-highlight'>
         <% else %>
         <li>

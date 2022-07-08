@@ -43,6 +43,7 @@ class ProductsController < ApplicationController
         format.json { render :show, status: :ok, location: @product }
 
         @product_new_price = @product.price
+        @updated_product_id = @product.id
         @count = session[:counter]
         @products = Product.all.order(:title)
         ActionCable.server.broadcast 'products', html: render_to_string('store/index', layout: false)
