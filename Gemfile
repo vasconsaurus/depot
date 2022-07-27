@@ -52,3 +52,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# This gem provides XML serialization for your Active Model objects and Active Record models.
+gem 'activemodel-serializers-xml'
