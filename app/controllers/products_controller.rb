@@ -70,6 +70,7 @@ class ProductsController < ApplicationController
       respond_to do |format|
         format.atom
         format.html
+        format.json { render json: @product.to_json(include: :orders)}
       end
     end
   end
