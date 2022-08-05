@@ -3,6 +3,7 @@
 <% end %>
 
 <h1>Your Pragamatic Catalog</h1>
+<% @count == nil ? @count = 0 : @count %>
 <% if  @count >= 5 %>
   <p>count: <%= pluralize(@count, "visit") %></p>
 <% end %>
