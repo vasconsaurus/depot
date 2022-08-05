@@ -11,15 +11,21 @@ class LineItemsTest < ApplicationSystemTestCase
   end
 
   test "creating a Line item" do
-    visit line_items_url
-    click_on "New Line Item"
+    # visit line_items_url
+    # click_on "New Line Item"
 
-    fill_in "Cart", with: @line_item.cart_id
-    fill_in "Product", with: @line_item.product_id
-    click_on "Create Line item"
+    # fill_in "Cart", with: @line_item.cart_id
+    # fill_in "Product", with: @line_item.product_id
+    # click_on "Create Line item"
 
-    assert_text "Line item was successfully created"
-    click_on "Back"
+    # assert_text "Line item was successfully created"
+    # click_on "Back"
+    visit store_index_url
+
+    click_on 'Add to Cart', match: :first
+
+    assert_text "Your Pragmatic Cart"
+
   end
 
   test "updating a Line item" do
