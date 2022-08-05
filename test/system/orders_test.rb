@@ -65,5 +65,13 @@ class OrdersTest < ApplicationSystemTestCase
     select 'Check', from: 'order_pay_type'
 
     assert_selector "#order_routing_number"
+
+    select 'Credit card', from: 'order_pay_type'
+
+    assert_selector "#order_credit_card_number"
+
+    select 'Purchase order', from: 'order_pay_type'
+
+    assert_selector "#order_po_number"
   end
 end
