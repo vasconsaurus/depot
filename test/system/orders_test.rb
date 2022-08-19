@@ -1,4 +1,5 @@
 require "application_system_test_case"
+require_relative "../../lib/pago.rb"
 
 class OrdersTest < ApplicationSystemTestCase
   include ActiveJob::TestHelper
