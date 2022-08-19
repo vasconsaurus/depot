@@ -79,7 +79,7 @@ class OrdersTest < ApplicationSystemTestCase
     end
 
     orders = Order.all
-    aseert_equal 1, orders.size
+    assert_equal 1, orders.size
 
     order = orders.first
 
