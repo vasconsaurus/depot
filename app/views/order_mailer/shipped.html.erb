@@ -3,5 +3,5 @@
 
 <table>
   <tr><th colspan="2">Qty</th><th>Description</th></tr>
-  <%= render @order.line_items %>
+  <%= render "line_items/line_item_mail", line_items: @order.line_items %>
 </table>
