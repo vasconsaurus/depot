@@ -43,3 +43,6 @@ yarn-debug.log*
 # ignore DS_Store
 .DS_Store
 /.DS_Store
+
+# igore .env
+/.env
