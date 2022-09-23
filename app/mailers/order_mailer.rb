@@ -1,5 +1,5 @@
 class OrderMailer < ApplicationMailer
-  default from: 'Manu <depot@example.org>'
+  default from: ENV['SECRET_EMAIL']
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
