@@ -42,6 +42,8 @@ class ProductsController < ApplicationController
         format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }
         format.json { render :show, status: :ok, location: @product }
 
+        @product_new_price = @product.price
+        @updated_product_id = @product.id
         @count = session[:counter]
         @products = Product.all.order(:title)
         ActionCable.server.broadcast 'products', html: render_to_string('store/index', layout: false)
@@ -67,6 +69,9 @@ class ProductsController < ApplicationController
     if stale?(@latest_order)
       respond_to do |format|
         format.atom
+        format.html
+        format.json { render json: @product.to_json(include: :orders)}
+        format.xml  { render xml: @product.to_xml(include: :orders) }
       end
     end
   end

@@ -54,3 +54,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails', groups: [:development, :test]
+# This gem provides XML serialization for your Active Model objects and Active Record models.
+gem 'activemodel-serializers-xml'

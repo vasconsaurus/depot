@@ -10,15 +10,13 @@ class CartsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Carts"
   end
 
-  # test "creating a Cart" do
-  #   visit carts_url
-  #   click_on "New Cart"
+  test "creating a Cart" do
+    visit store_index_url
 
-  #   click_on "Create Cart"
+    click_on "Add to Cart", match: :first
 
-  #   assert_text "Cart was successfully created"
-  #   click_on "Back"
-  # end
+    assert_text "Your Pragmatic Cart"
+  end
 
   # test "updating a Cart" do
   #   visit carts_url
@@ -30,12 +28,15 @@ class CartsTest < ApplicationSystemTestCase
   #   click_on "Back"
   # end
 
-  # test "destroying a Cart" do
-  #   visit carts_url
-  #   page.accept_confirm do
-  #     click_on "Destroy", match: :first
-  #   end
+  test "destroying a Cart" do
+    visit store_index_url
 
-  #   assert_text "Cart was successfully destroyed"
-  # end
+    click_on "Add to Cart", match: :first
+
+    page.accept_confirm do
+      click_on "Empty cart", match: :first
+    end
+
+    assert_no_text "Your Pragmatic Cart"
+  end
 end

@@ -30,6 +30,9 @@
       border-top: solid thin black;
     }
   }
+  #checkout-disabled {
+    background-color: rgb(196, 196, 176);
+  }
   input[type="submit"] {
     background-color: #881;
     border-radius: 0.354em;
