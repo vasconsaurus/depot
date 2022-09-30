@@ -91,7 +91,7 @@ class OrdersTest < ApplicationSystemTestCase
 
     mail = ActionMailer::Base.deliveries.last
     assert_equal ['test@test.org'], mail.to
-    assert_equal 'Manu <depot@example.org>', mail[:from].value
+    assert_equal ENV['SECRET_EMAIL'], mail[:from].value
     assert_equal 'Pragmatic Store Order Confirmation', mail.subject
 
   end
