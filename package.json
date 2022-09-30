@@ -1,6 +1,7 @@
 {
   "name": "depot",
   "private": true,
+  "license": "unlicensed",
   "dependencies": {
     "@babel/preset-react": "^7.18.6",
     "@rails/actioncable": "^6.0.0",

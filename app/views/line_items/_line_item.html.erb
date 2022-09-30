@@ -9,5 +9,5 @@
   <td class="button"> <%= button_to '-', decrement_path(line_item), method: :put, remote: true %> </td>
 
   <td class="price"><%= number_to_currency(line_item.total_price) %></td>
-  <td class="button"> <%= button_to 'X', line_item, method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+  <td class="button"> <%= button_to 'X', line_item, method: :delete, data: { confirm: 'Are you sure?'}  %></td>
 </tr>
