@@ -52,6 +52,9 @@ class OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+    if @order[:ship_date] < Date.today
+      OrderMailer.shipped(@order).deliver_later
+    end
   end
 
   # DELETE /orders/1 or /orders/1.json
@@ -72,7 +75,7 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type)
+      params.require(:order).permit(:name, :address, :email, :pay_type, :ship_date)
     end
 
     def ensure_cart_isnt_empty

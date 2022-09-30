@@ -26,6 +26,13 @@
     <%= form.text_field :email, size: 40 %>
   </div>
 
+  <% if order.id %>
+    <div class="field">
+      <%= form.label :ship_date %>
+      <%= form.date_field :ship_date, size: 40 %>
+    </div>
+  <% end %>
+
   <div id="pay-type-component"></div>
 
   <div class="actions">
