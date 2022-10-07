@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
-  rescue_from Exception, with: :email_error
+  # rescue_from Exception, with: :email_error
 
   def email_error
-    logger.error 'An error occourred'
-    ApplicationMailer.error_notification_email.deliver_later
+    if Logger::Severity::FATAL
+      ApplicationMailer.error_notification_email.deliver_later
+    end
+    # redirect_to store_index_url
   end
 end
