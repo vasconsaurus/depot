@@ -1,0 +1,9 @@
+<h3>Pragmatic Order – Shipping Date</h3>
+<p>This is just to let you know that your shipping date has been updated:</p>
+<p><strong>shipping date:</strong> <%= @order.ship_date.to_formatted_s(:short) %></p>
+
+<h3>Order</h3>
+<table>
+  <tr><th colspan="2">Qty</th><th>Description</th></tr>
+  <%= render "line_items/line_item_mail", line_items: @order.line_items %>
+</table>

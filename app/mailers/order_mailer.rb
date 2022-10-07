@@ -22,4 +22,10 @@ class OrderMailer < ApplicationMailer
 
     mail to: order.email, subject: 'Pragmatic Store Order Shipped'
   end
+
+  def notification_ship_date(order)
+    @order = order
+
+    mail to: order.email, subject: 'Pragmatic Store – Shipping Date'
+  end
 end

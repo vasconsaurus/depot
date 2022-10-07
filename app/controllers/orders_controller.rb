@@ -52,8 +52,8 @@ class OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
-    if @order[:ship_date] < Date.today
-      OrderMailer.shipped(@order).deliver_later
+    if @order[:ship_date]
+      OrderMailer.notification_ship_date(@order).deliver_later
     end
   end
 
